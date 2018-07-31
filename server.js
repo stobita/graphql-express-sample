@@ -24,6 +24,12 @@ const userType = new GraphQLObjectType({
     },
     name: {
       type: GraphQLString
+    },
+    createdAt: {
+      type: GraphQLString
+    },
+    updatedAt: {
+      type: GraphQLString
     }
   }
 });
@@ -62,28 +68,28 @@ const schema = new GraphQLSchema({
 //   }
 // `);
 
-const getUser = args => {
-  const id = args.id;
-  models.User.findById(id).then(result => {
-    const user = result.get();
-    return {
-      id: user.id,
-      name: user.name
-    };
-  });
-};
+// const getUser = args => {
+//   const id = args.id;
+//   models.User.findById(id).then(result => {
+//     const user = result.get();
+//     return {
+//       id: user.id,
+//       name: user.name
+//     };
+//   });
+// };
 
-const root = {
-  hello: () => {
-    return 'Hello World';
-  },
-  user: args => {
-    return {
-      id: 1,
-      name: 'hoa'
-    };
-  }
-};
+// const root = {
+//   hello: () => {
+//     return 'Hello World';
+//   },
+//   user: args => {
+//     return {
+//       id: 1,
+//       name: 'hoa'
+//     };
+//   }
+// };
 
 app.get('/', (req, res) => {
   res.send('Express Sample');
